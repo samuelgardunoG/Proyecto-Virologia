@@ -1,5 +1,4 @@
 import javax.crypto.SecretKey;
-
 import Criptos.Contraseñas;
 import Criptos.Criptos;
 import Criptos.Encryptor;
