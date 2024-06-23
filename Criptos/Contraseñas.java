@@ -22,7 +22,7 @@ public class Contraseñas {
             if (rectificarContraseña(contrasena)) {
                 try (PrintWriter writer = new PrintWriter(new FileWriter("usuarios.txt", true))) {
                     writer.println("Usuario: " + usuario);
-                    writer.println("Contraseña: " + contrasena);
+                    writer.println("Contrasena: " + contrasena);
                     writer.println();  // Añadir una línea en blanco entre usuarios
                     System.out.println("Datos guardados exitosamente.");
                 } catch (IOException e) {
@@ -81,7 +81,7 @@ public class Contraseñas {
             while ((linea = reader.readLine()) != null) {
                 if(linea.startsWith("Usuario: ")){
                     linea = reader.readLine();
-                    if (linea.startsWith("Contraseña: ")) {
+                    if (linea.startsWith("Contrasena: ")) {
                         String contraseña = linea.substring(12).trim(); // Extraer la contraseña después de "Contraseña: " y eliminar espacios en blanco
                         System.out.println("Contraseña leída del archivo: '" + contraseña + "'"); // Mensaje de depuración
                         System.out.println("Contraseña buscada: '" + contraseñaBuscada + "'"); // Mensaje de depuración
@@ -109,9 +109,8 @@ public class Contraseñas {
             while ((linea = reader.readLine()) != null) {
                 if (linea.startsWith("Usuario: ")) {
                     usuario = linea.substring(9).trim(); // Extraer el usuario después de "Usuario: " y eliminar espacios en blanco
-                } else if (linea.startsWith("Contraseña: ")) {
+                } else if (linea.startsWith("Contrasena: ")) {
                     contraseña = linea.substring(12).trim(); // Extraer la contraseña después de "Contraseña: " y eliminar espacios en blanco
-
                     // Verificar las credenciales
                     if (usuario != null && contraseña != null && usuario.equals(usuarioDado) && contraseña.equals(contraseñaDada)) {
                         encontrado = true;
