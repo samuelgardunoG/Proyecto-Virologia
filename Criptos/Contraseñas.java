@@ -17,7 +17,8 @@ public class Contraseñas {
         String usuario = scanner.nextLine();
         int contadorContraseña = 0;
         while (contadorContraseña == 0) {
-            System.out.print("Introduce tu contraseña (debe ser una clave AES válida en Base64): ");
+            System.out.println("Introduce tu contraseña");
+            System.out.println("(Debe ser una clave AES válida en Base64, si requiere ayuda puede usar la pagina: https://www.base64encode.org): ");
             String contrasena = scanner.nextLine();
             if (rectificarContraseña(contrasena)) {
                 try (PrintWriter writer = new PrintWriter(new FileWriter("usuarios.txt", true))) {
