@@ -2,3 +2,6 @@ Usuario: Samuel
 Contrasena: BiKhF9R4mkhSOpm1EASnIMf85iVwpQT/56iSYVAoYNA=
 Usuario: Daniel
 Contrasena: BiKhF9R4mkhSOpm1EASnIMf85iVwpQT/56iSYVAoYNB=
+Usuario: UsuarioPrueba
+Contrasena: BiKhF9R4mkhSOpm1EASnIMf85iVwpQT/56iSYVAoYNC=
+

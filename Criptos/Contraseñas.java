@@ -24,7 +24,7 @@ public class Contraseñas {
                 try (PrintWriter writer = new PrintWriter(new FileWriter("usuarios.txt", true))) {
                     writer.println("Usuario: " + usuario);
                     writer.println("Contrasena: " + contrasena);
-                    writer.println();  // Añadir una línea en blanco entre usuarios
+                    writer.println();  
                     System.out.println("Datos guardados exitosamente.");
                 } catch (IOException e) {
                     System.out.println("Ocurrió un error al guardar los datos.");
@@ -39,10 +39,9 @@ public class Contraseñas {
 
     public static boolean rectificarContraseña(String contrasena) {
         try {
-            // Decodificar la cadena Base64
+
             byte[] claveBytes = Base64.getDecoder().decode(contrasena);
 
-            // Verificar la longitud de la clave (16, 24 o 32 bytes para AES)
             int longitudClave = claveBytes.length;
             if (longitudClave == 16 || longitudClave == 24 || longitudClave == 32) {
                 return true;
@@ -83,12 +82,12 @@ public class Contraseñas {
                 if(linea.startsWith("Usuario: ")){
                     linea = reader.readLine();
                     if (linea.startsWith("Contrasena: ")) {
-                        String contraseña = linea.substring(12).trim(); // Extraer la contraseña después de "Contraseña: " y eliminar espacios en blanco
-                        System.out.println("Contraseña leída del archivo: '" + contraseña + "'"); // Mensaje de depuración
-                        System.out.println("Contraseña buscada: '" + contraseñaBuscada + "'"); // Mensaje de depuración
+                        String contraseña = linea.substring(12).trim();
+                        System.out.println("Contraseña leída del archivo: '" + contraseña + "'"); 
+                        System.out.println("Contraseña buscada: '" + contraseñaBuscada + "'"); 
                         if (contraseña.equals(contraseñaBuscada)) {
                             encontrada = true;
-                            break; // Salir del bucle si se encuentra la coincidencia
+                            break; 
                         }
                     }
                 }
@@ -109,16 +108,13 @@ public class Contraseñas {
             String contraseña = null;
             while ((linea = reader.readLine()) != null) {
                 if (linea.startsWith("Usuario: ")) {
-                    usuario = linea.substring(9).trim(); // Extraer el usuario después de "Usuario: " y eliminar espacios en blanco
+                    usuario = linea.substring(9).trim(); 
                 } else if (linea.startsWith("Contrasena: ")) {
-                    contraseña = linea.substring(12).trim(); // Extraer la contraseña después de "Contraseña: " y eliminar espacios en blanco
-                    // Verificar las credenciales
+                    contraseña = linea.substring(12).trim(); 
                     if (usuario != null && contraseña != null && usuario.equals(usuarioDado) && contraseña.equals(contraseñaDada)) {
                         encontrado = true;
-                        break; // Salir del bucle si se encuentra la coincidencia
+                        break; 
                     }
-
-                    // Reiniciar variables para la siguiente búsqueda
                     usuario = null;
                     contraseña = null;
                 }
