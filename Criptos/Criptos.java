@@ -5,13 +5,22 @@ import java.util.Scanner;
 public class Criptos {
 
     
-    public static SecretKey ingresoClave(){
+    public static SecretKey ingresoClave() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingresa la clave AES en formato Base64 para desencriptar los archivos: ");
+        SecretKey userSecretKey = null;
+        boolean claveValida = false;
+        while (!claveValida) {
+            System.out.print("Ingresa la clave AES en formato Base64 para desencriptar los archivos: ");
             String userKeyInput = scanner.nextLine().trim(); // Trim para eliminar espacios adicionales
-            // Convertir la clave ingresada por el usuario de Base64 a SecretKey
-            SecretKey userSecretKey = Encryptor.convertStringToAESKey(userKeyInput);
-        return userSecretKey;    
+    
+            if (Contraseñas.rectificarContraseña(userKeyInput)) {
+                userSecretKey = Encryptor.convertStringToAESKey(userKeyInput);
+                claveValida = true;
+            } else {
+                System.out.println("La clave ingresada no es válida. Por favor, intenta de nuevo.");
+            }
+        }
+        return userSecretKey;
     }
 
     // Métodos para encriptar y desencriptar archivos de texto, imagen y audio
